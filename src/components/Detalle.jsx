@@ -5,13 +5,17 @@ import { PizzaContext } from '../context/PizzaContext';
 
 export default function Detalle() {
   const { id } = useParams();
+  /* PizzaContext es para acceder al estado de las pizzas */
   const { pizzas } = useContext(PizzaContext);
-  const pizza = pizzas.find((p) => p.id === id);
+  const pizza = pizzas.find((p) => p.id === id); 
+  // sirve para buscar en el arreglo de pizzas según su id de c/u 
 
-  if (!pizza) {
+  if (!pizza) {  //si la pizza no existe, no se encuentra el id, va a salir el mensaje
+
+  
     return <div>Pizza no encontrada</div>;
   }
-
+/* acá se muestra la pizza encontrada: */
   return (
     <div className="container mt-4">
       <div className="row">
