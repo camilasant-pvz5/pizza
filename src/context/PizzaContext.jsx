@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-
 export const PizzaContext = createContext();
 
 export default function PizzaProvider({ children }) {
@@ -13,7 +12,7 @@ export default function PizzaProvider({ children }) {
   }
 
   useEffect(() => {
-    getPizzas(); 
+    getPizzas();
   }, []); /* nos sirve para manejar el ciclo de vida de los componentes, recibe dos parametros 1 funcion flecha y despues de la coma un array de dependencia si esta vacio ejecuta todo lo que este dentro de las llaves una sola vez cuando se cree el componente */
 
   function agregarCarrito(pizza) { /* el indice de un elemento en un arreglo se hace con findeindex  */
@@ -27,13 +26,29 @@ export default function PizzaProvider({ children }) {
     }
   }
 
+  function quitarCarrito(pizza) { /* el indice de un elemento en un arreglo se hace con findeindex  */
+    const producto = { ...pizza, count: 1 };
+    const indicePizzas = carrito.findIndex((pedido) => pedido.id === pizza.id);
+    if (indicePizzas >= 0) {
+      if (carrito[indicePizzas].count > 1) {
+        carrito[indicePizzas].count--;
+        setCarrito([...carrito]);
+      } else {
+        eliminarDelCarrito(pizza.id)
+      }
+    } else {
+      console.log("borrado")
+      
+    }
+  }
+
   function eliminarDelCarrito(id) {
     const newCarrito = carrito.filter((item) => item.id !== id);
     setCarrito(newCarrito);
   }
 
   return (
-    <PizzaContext.Provider value={{ pizzas, setPizzas, carrito, setCarrito, agregarCarrito, eliminarDelCarrito }}> {/* va dentro todo lo que le vamos a pasar a nuestro children */}
+    <PizzaContext.Provider value={{ pizzas, setPizzas, carrito, setCarrito, agregarCarrito, eliminarDelCarrito, quitarCarrito }}> {/* va dentro todo lo que le vamos a pasar a nuestro children */}
       {children} {/* //va a ser todo lo que esté en medio del componente por eso hay que envolverlo */}
     </PizzaContext.Provider>
   );
