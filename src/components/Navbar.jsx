@@ -16,7 +16,7 @@ function Navbar() {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <Link className="nav-link text-white" to="/carrito">
-              Carrito: ${totalAmount.toLocaleString()}
+            🛒: ${totalAmount.toLocaleString()}
             </Link>
           </li>
         </ul>

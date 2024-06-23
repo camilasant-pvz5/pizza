@@ -19,14 +19,14 @@ function PizzaCard({ pizza }) {
         <div className="card-body">
           <h5 className="card-title text-center">{pizza.name}</h5>
           <p><strong>Ingredientes:</strong></p>
-          <ul>
+          <ul> 
             {pizza.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
           <h5 className="text-center text-success">${pizza.price.toLocaleString()}</h5>
           <div className="d-flex justify-content-between">
-            <button className="btn btn-info" onClick={handleVerMas}>Ver Más</button>
+            <button className="btn btn-info" onClick={handleVerMas}>Ver Más 👀</button>
             <button className="btn btn-danger" onClick={() => agregarCarrito(pizza)}>Añadir <span role="img" aria-label="cart">🛒</span></button>
           </div>
         </div>
