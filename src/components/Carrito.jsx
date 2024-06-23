@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom si estás usando React Router
 import { PizzaContext } from '../context/PizzaContext';
 
 export default function Carrito() {
@@ -40,6 +41,11 @@ export default function Carrito() {
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* botón para volver al inicio/home  */}
+      <div className="text-center mt-4">
+        <Link to="/" className="btn btn-primary">Volver a la Página Inicial</Link>
       </div>
     </div>
   );
